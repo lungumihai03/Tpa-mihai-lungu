@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ro">
-<!-- M page tpa.mihailungu.ml/... -->
+<!-- A page tpa.mihailungu.ml/... -->
 <head>
   <title>Dashboard</title>
   <link rel="icon" type="image/x-icon" href="../../resources/tpa.png">
@@ -17,7 +17,16 @@
       footerYear.textContent = currentYear;
     });
   </script>
-
+<style>
+	
+	.poza-cerc {
+            width: 300px; /* Ajustează dimensiunea imaginii aici */
+            height: 300px; /* Asigură-te că aceste valori sunt egale pentru a menține aspectul rotund */
+            border-radius: 50%; /* Această valoare face elementul să fie rotund */
+            overflow: hidden; /* Ascunde partea imaginii care depășește marginea cercului */
+        }
+	
+	</style>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,500&display=swap');
 	  
@@ -104,7 +113,28 @@
 		  padding-right: 0;
 		  
 	  }
-	  
+	  .rectangle {
+  width: auto;
+  background-color: #5F5F5F;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.rectangle h2 {
+  margin-top: 0;
+}
+
+.rectangle p {
+  margin: 10px 0;
+}
+
+.timestamp {
+  text-align: right;
+}
+
 	  
   </style>
 
@@ -203,18 +233,20 @@
         </button>
         <a class="navbar-brand" href="../../"><img src="../../resources/tpa.png" class="confirmed"
             style="width:60;height:50px;" /></a>
-        
+        <a class="navbar-brand" href="../../"><font face="Lora">Mihai Lungu</font></a>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li><a class="navbar-brand" href="../../">Acasă</a></li>
+          <li><a href="../../">Acasă</a></li>
           
 
         </ul>
         <ul class="nav navbar-nav navbar-right">
 		
-          <li><a class="navbar-brand" href=><font face="Lora">Mihai Lungu</font></a>
-            
+          <li><a class="navbar-brand" href=><font face="Lora">Andrei Braicov</font> </a>
+            <li>
+        <img src="A.png" alt="Imaginea ta" style="width: 60px; height: 60px">
+    </li>
 				
            
           </li>
@@ -225,7 +257,53 @@
   </nav>
 
   <font size="7" color="white">.</font>
+<div class="rectangle">
+    <h2><font color="white">Ex 1 pag 15</font></h2>
+    <p><font color="white">Data publicării: 18 iulie 2023</font></p>
+    <font color="white"><p class="timestamp" data-published="2023-07-18T12:34:56Z"></p></font>
+  </div>
 
+  <div class="rectangle">
+    <h2><font color="white">Ex 2 pag 16</font></h2>
+    <p><font color="white">Data publicării: 19 iulie 2023</font></p>
+    <font color="white"><p class="timestamp" data-published="2023-07-19T09:15:30Z"></p></font>
+  </div>
+
+  <!-- Adaugă mai multe dreptunghiuri aici -->
+
+  <script>
+    function timeSince(date) {
+      const seconds = Math.floor((new Date() - date) / 1000);
+      let interval = Math.floor(seconds / 31536000);
+
+      if (interval > 1) {
+        return interval + " ani";
+      }
+      interval = Math.floor(seconds / 2592000);
+      if (interval > 1) {
+        return interval + " luni";
+      }
+      interval = Math.floor(seconds / 86400);
+      if (interval > 1) {
+        return interval + " zile";
+      }
+      interval = Math.floor(seconds / 3600);
+      if (interval > 1) {
+        return interval + " ore";
+      }
+      interval = Math.floor(seconds / 60);
+      if (interval > 1) {
+        return interval + " minute";
+      }
+      return Math.floor(seconds) + " secunde";
+    }
+
+    const timestamps = document.querySelectorAll(".timestamp");
+    timestamps.forEach((timestamp) => {
+      const publishedDate = new Date(timestamp.getAttribute("data-published"));
+      timestamp.textContent = "Publicat acum " + timeSince(publishedDate);
+    });
+  </script>
   <!-- Baza ro -->
     <footer>
     <div class="container">
