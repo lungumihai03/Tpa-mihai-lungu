@@ -1,1 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Autentificare TPA</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/x-icon" href="../../../resources/tpa.png">
+  <style>
+    body {
+      background-color: #f0f0f0;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+	  .container {
+  width: 340px;
+  padding: 20px;
+  border: none;
+  background-color: rgba(30, 30, 30, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  text-align: center;
+}
 
+h2 {
+  margin-top: 0;
+  font-size: 28px;
+  color: #fff;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+  color: #fff;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 90%;
+  padding: 12px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 6px;
+  background-color: #393939;
+  color: #fff;
+  font-size: 16px;
+}
+
+input[type="submit"] {
+  background-color: #ff6f00;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+  background-color: #ff8f00;
+}
+ </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+</head>
+<body>
+  <div class="container">
+	  <h2><font color="#0200FF">T</font><font color="#D8FF00">P</font><font color="#FF0004">A</font> MIHAILUNGU.COM</h2> 
+    <h2>Autentificare</h2>
+    <form onsubmit="return validateForm()">
+      <label for="username">Nume utilizator:</label>
+      <input type="text" id="username" required><br>
+		  <label for="password">Parolă:</label>
+  <input type="password" id="password" required><br>
+
+  <input type="submit" value="Autentificare">
+</form>
+	  </div>
+	
+	<script>
+    function validateForm() {
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+      var hashedPassword = CryptoJS.SHA256(password).toString(); // Criptare parolă în SHA-256
+
+      // Verificarea utilizatorului și parolei
+      if (username === "admin.lungu" && hashedPassword === "27589449a5642bfde0da7910c21484fa77af4429c5925ff5142210a8a28bfd49") {
+        alert("Autentificare reușită! " + username);
+		  window.location.href = "http://tpa.mihailungu.com/user/618e7d3bb284742f65b9ebc080df851e1e34ef43f24d148bd811245a197905a7/04f8996da763b7a969b1028ee3007569eaf3a635486ddab211d512c85b9df8fb";
+        // Adăugă aici codul pentru redirecționare către pagina platformei cloud
+      } else if(username==="andrei.braicov" && hashedPassword === "5c6cc961c8475461047f5bfbe34b992afceb9f43a0a9163e0efa48da54c78cb8") {
+		  alert("Autentificare reușită! " + username);
+        window.location.href = "http://tpa.mihailungu.com/user/618e7d3bb284742f65b9ebc080df851e1e34ef43f24d148bd811245a197905a7/a75dfa26557926b86f515e77849f133bf57b5758d66fa8ecc5ad00440934983c";
+      } else alert("Nume de utilizator sau parolă greșite!");
+
+      return false; // Prevenirea trimiterii formularului
+    }
+  </script>
+	
+</body>
+</html>
