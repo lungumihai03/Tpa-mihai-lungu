@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ro">
+<!-- A page tpa.mihailungu.ml/... -->
+<head>
+  <title>Dashboard</title>
+  <link rel="icon" type="image/x-icon" href="https://tpa.mihailungu.com//resources/tpa.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var currentYear = new Date().getFullYear();
+      var footerYear = document.getElementById("footer-year");
+      footerYear.textContent = currentYear;
+    });
+  </script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,500&display=swap');
+	  
+	  
+	  .navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand img {
+  margin-right: 10px;
+}
+
+.navbar-brand font {
+  font-size: 24px;
+  font-family: "Lora";
+}
+
+.navbar-nav > li > a {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.dropdown-menu {
+  background-color: #333;
+	
+}
+
+.dropdown-menu > li > a {
+  color: #fff;
+  font-size: 18px;
+}
+
+.dropdown-menu > li > a:hover {
+  background-color: #444;
+}
+
+.dropdown-menu > li > a > font {
+  color: #fff;
+}
+
+
+	  
+	  
+  </style>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Create three equal columns that floats next to each other */
+    .column {
+      float: left;
+      width: 50%;
+      padding: 10px;
+      height: auto;
+    }
+	  
+	  #column1 {
+      float: left;
+      width: 25%;
+      padding: 10px;
+      height: auto;
+    }
+
+	  #column2 {
+      float: right;
+      width: 70%;
+      padding: 10px;
+      height: auto;
+    }
+	  
+    /* Clear floats after the columns */
+	  
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+	  
+	  .about {
+		  padding-left: 5px;
+		  padding-right: 0;
+		  
+	  }
+	  
+	  .rectangle {
+  width: auto;
+  background-color: #5F5F5F;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.rectangle h2 {
+  margin-top: 0;
+}
+
+.rectangle p {
+  margin: 10px 0;
+}
+
+.timestamp {
+  text-align: right;
+}
+
+  </style>
+
+  <style>
+
+    .all-browsers {
+      margin: 0;
+      padding: 15px;
+      background-color: lightgray;
+    }
+
+    .all-browsers > h1,
+    .browser {
+      margin: 10px;
+      padding: 15px;
+    }
+
+    .browser {
+      background: white;
+    }
+
+    .browser > h2,
+    p {
+      margin: 4px;
+      font-size: 100%;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+		align-content: center;
+		justify-content: center;
+		
+	  }
+	  
+	  .mijloc {
+		  padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    text-align: left;
+    margin: 0 auto;
+	  }
+	  
+	
+
+    .content {
+      flex: 1;
+    }
+
+    footer {
+      padding: 10px;
+      background-color: black;
+      color: white;
+      margin-top: auto;
+    }
+
+    .container-fluid {
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: 0;
+		
+    }
+  </style>
+
+  <style>
+    #container {
+      margin: 0 auto;
+      max-width: 1850px;
+    }
+
+    #content {
+      width: 100%;
+      padding: 0px;
+		
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" >
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="https://tpa.mihailungu.com/"><img src="https://tpa.mihailungu.com/resources/tpa.png" class="confirmed"
+            style="width:60;height:50px;" /></a>
+        <a class="navbar-brand" href="https://tpa.mihailungu.com/"><font face="Lora">Mihai Lungu</font></a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="https://tpa.mihailungu.com/">Acasă</a></li>
+          
+
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+		
+          <li><a class="navbar-brand" href=><font face="Lora">Violeta Bogdanova</font></a>
+            <li>
+        
+    </li>
+				
+           
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <font size="7" color="white">.</font>
+	<center>
+		<h1><font face="Lora">Sarcina 3 HTML :  14.09.2023</font></h1>
+	</center>
+	
+<div class="rectangle">
+    <h2><a href="https://tpa.mihailungu.com/user/a8427dc42690931f2ed4833f4d178a509ceac9891989bb9037749b40eed58de3/c6d397b4495f084c6ca961d15c5051d61b510ac58a8b3ee75c7c99d93ccf4bb2/63882f335c4129769c7821ee0b1831e3b49efbd5d954f9fe35845f29341fc64f/ml/m.bostan/exercitii/Sarcina3_html_14_09_23/ex1.html"><font color="white">Ex 1</font></a></h2>
+    <p><font color="white">Data publicării: 18 septembrie 2023</font></p>
+    <font color="white"><p class="timestamp" data-published="2023-09-18T18:00:00Z"></p></font>
+  </div>
+<div class="rectangle">
+    <h2><a href="https://tpa.mihailungu.com/user/a8427dc42690931f2ed4833f4d178a509ceac9891989bb9037749b40eed58de3/c6d397b4495f084c6ca961d15c5051d61b510ac58a8b3ee75c7c99d93ccf4bb2/63882f335c4129769c7821ee0b1831e3b49efbd5d954f9fe35845f29341fc64f/ml/m.bostan/exercitii/Sarcina3_html_14_09_23/ex2.html"><font color="white">Ex 2</font></a></h2>
+    <p><font color="white">Data publicării: 18 septembrie 2023</font></p>
+    <font color="white"><p class="timestamp" data-published="2023-09-18T18:00:00Z"></p></font>
+  </div>
+	<div class="rectangle">
+    <h2><a href="https://tpa.mihailungu.com/user/a8427dc42690931f2ed4833f4d178a509ceac9891989bb9037749b40eed58de3/c6d397b4495f084c6ca961d15c5051d61b510ac58a8b3ee75c7c99d93ccf4bb2/63882f335c4129769c7821ee0b1831e3b49efbd5d954f9fe35845f29341fc64f/ml/m.bostan/exercitii/Sarcina3_html_14_09_23/ex3.html"><font color="white">Ex 3</font></a></h2>
+    <p><font color="white">Data publicării: 18 septembrie 2023</font></p>
+    <font color="white"><p class="timestamp" data-published="2023-09-18T18:00:00Z"></p></font>
+  </div>
+	<div class="rectangle">
+    <h2><a href="https://tpa.mihailungu.com/user/a8427dc42690931f2ed4833f4d178a509ceac9891989bb9037749b40eed58de3/c6d397b4495f084c6ca961d15c5051d61b510ac58a8b3ee75c7c99d93ccf4bb2/63882f335c4129769c7821ee0b1831e3b49efbd5d954f9fe35845f29341fc64f/ml/m.bostan/exercitii/Sarcina3_html_14_09_23/ex4.html"><font color="white">Ex 4</font></a></h2>
+    <p><font color="white">Data publicării: 18 septembrie 2023</font></p>
+    <font color="white"><p class="timestamp" data-published="2023-09-18T18:00:00Z"></p></font>
+  </div>
+	<div class="rectangle">
+    <h2><a href="https://tpa.mihailungu.com/user/a8427dc42690931f2ed4833f4d178a509ceac9891989bb9037749b40eed58de3/c6d397b4495f084c6ca961d15c5051d61b510ac58a8b3ee75c7c99d93ccf4bb2/63882f335c4129769c7821ee0b1831e3b49efbd5d954f9fe35845f29341fc64f/ml/m.bostan/exercitii/Sarcina3_html_14_09_23/ex5.html"><font color="white">Ex 5</font></a></h2>
+    <p><font color="white">Data publicării: 18 septembrie 2023</font></p>
+    <font color="white"><p class="timestamp" data-published="2023-09-18T18:00:00Z"></p></font>
+  </div>
+	<div class="rectangle">
+    <h2><a href="https://tpa.mihailungu.com/user/a8427dc42690931f2ed4833f4d178a509ceac9891989bb9037749b40eed58de3/c6d397b4495f084c6ca961d15c5051d61b510ac58a8b3ee75c7c99d93ccf4bb2/63882f335c4129769c7821ee0b1831e3b49efbd5d954f9fe35845f29341fc64f/ml/m.bostan/exercitii/Sarcina3_html_14_09_23/ex6.html"><font color="white">Ex 6</font></a></h2>
+    <p><font color="white">Data publicării: 18 septembrie 2023</font></p>
+    <font color="white"><p class="timestamp" data-published="2023-09-18T18:00:00Z"></p></font>
+  </div>
+	<div class="rectangle">
+    <h2><a href="https://tpa.mihailungu.com/user/a8427dc42690931f2ed4833f4d178a509ceac9891989bb9037749b40eed58de3/c6d397b4495f084c6ca961d15c5051d61b510ac58a8b3ee75c7c99d93ccf4bb2/63882f335c4129769c7821ee0b1831e3b49efbd5d954f9fe35845f29341fc64f/ml/m.bostan/exercitii/Sarcina3_html_14_09_23/ex7.html"><font color="white">Ex 7</font></a></h2>
+    <p><font color="white">Data publicării: 18 septembrie 2023</font></p>
+    <font color="white"><p class="timestamp" data-published="2023-09-18T18:00:00Z"></p></font>
+  </div>
+	<div class="rectangle">
+    <h2><a href="https://tpa.mihailungu.com/user/a8427dc42690931f2ed4833f4d178a509ceac9891989bb9037749b40eed58de3/c6d397b4495f084c6ca961d15c5051d61b510ac58a8b3ee75c7c99d93ccf4bb2/63882f335c4129769c7821ee0b1831e3b49efbd5d954f9fe35845f29341fc64f/ml/m.bostan/exercitii/Sarcina3_html_14_09_23/ex8.html"><font color="white">Ex 8</font></a></h2>
+    <p><font color="white">Data publicării: 18 septembrie 2023</font></p>
+    <font color="white"><p class="timestamp" data-published="2023-09-18T18:00:00Z"></p></font>
+  </div>
+	<div class="rectangle">
+    <h2><a href="https://tpa.mihailungu.com/user/a8427dc42690931f2ed4833f4d178a509ceac9891989bb9037749b40eed58de3/c6d397b4495f084c6ca961d15c5051d61b510ac58a8b3ee75c7c99d93ccf4bb2/63882f335c4129769c7821ee0b1831e3b49efbd5d954f9fe35845f29341fc64f/ml/m.bostan/exercitii/Sarcina3_html_14_09_23/ex9.html"><font color="white">Ex 9</font></a></h2>
+    <p><font color="white">Data publicării: 18 septembrie 2023</font></p>
+    <font color="white"><p class="timestamp" data-published="2023-09-18T18:00:00Z"></p></font>
+  </div>
+ 
+
+  <!-- Adaugă mai multe dreptunghiuri aici -->
+
+  <script>
+    function timeSince(date) {
+      const seconds = Math.floor((new Date() - date) / 1000);
+      let interval = Math.floor(seconds / 31536000);
+
+      if (interval > 1) {
+        return interval + " ani";
+      }
+      interval = Math.floor(seconds / 2592000);
+      if (interval > 1) {
+        return interval + " luni";
+      }
+      interval = Math.floor(seconds / 86400);
+      if (interval > 1) {
+        return interval + " zile";
+      }
+      interval = Math.floor(seconds / 3600);
+      if (interval > 1) {
+        return interval + " ore";
+      }
+      interval = Math.floor(seconds / 60);
+      if (interval > 1) {
+        return interval + " minute";
+      }
+      return Math.floor(seconds) + " secunde";
+    }
+
+    const timestamps = document.querySelectorAll(".timestamp");
+    timestamps.forEach((timestamp) => {
+      const publishedDate = new Date(timestamp.getAttribute("data-published"));
+      timestamp.textContent = "Publicat acum " + timeSince(publishedDate);
+    });
+  </script>
+  <!-- Baza ro -->
+    <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <font size="4"><p>© <span id="footer-year"></span> <font face="Lora" size="+1"><font color="#0A00FF">T</font><font color="#FFF500">P</font><font color="#FF0004">A</font> Mihai Lungu</font></p></font>
+        </div>
+        <div class="col-md-6" align="right">
+          <p>
+            <a href="https://x.com/lungu_mihai03/" target="_blank"><img
+                src="https://www.mihailungu.com/resources/x-logo.png" style="width: 50px;height: 50px" /></a>
+            <a href="https://www.linkedin.com/in/lungu-mihai03/" target="_blank"><img
+                src="https://tpa.mihailungu.com/resources/linkedin-logo.png" style="width: 50px;height: 50px" /></a>
+
+            <a href="https://www.facebook.com/lungu.mihai03" target="_blank"><img
+                src="https://tpa.mihailungu.com/resources/fb-logo.png" style="width: 50px;height: 50px" /></a>
+
+            <a href="https://www.instagram.com/lungu.mihai03/" target="_blank"><img
+                src="https://tpa.mihailungu.com/resources/ig-logo.png" style="width: 50px;height: 50px" /></a>
+          </p>
+        </div>
+      </div>
+         </div>
+  </footer>
+
+</body>
+
+</html>
