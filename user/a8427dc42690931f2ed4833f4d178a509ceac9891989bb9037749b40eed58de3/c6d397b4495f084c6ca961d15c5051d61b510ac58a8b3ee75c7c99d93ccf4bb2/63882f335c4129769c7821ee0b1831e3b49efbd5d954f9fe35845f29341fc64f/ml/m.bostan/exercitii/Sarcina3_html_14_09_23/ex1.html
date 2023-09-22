@@ -1,3 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/x-icon" href="../dev-ico.png">
+    <title>Web Editor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.3/codemirror.css">
+    <script src="https://www.w3schools.com/lib/codemirror.js"></script>
+    <script src="https://www.w3schools.com/lib/codemirror_jsx.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.3/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.3/mode/css/css.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/acorn/8.4.1/acorn.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/acorn/8.4.1/walk.js"></script>
+	
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,500&display=swap');
+	  .dark-mode {
+    background-color: #333;
+    color: #fff;
+}
+	.CodeMirror span.cm-tag {
+        color: #485DFF;
+    }
+	  .navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand img {
+	padding-top: 5px;
+  margin-right: 10px;
+}
+
+.navbar-brand font {
+  font-size: 38px;
+  font-family: "Lora";
+}
+
+.navbar-nav > li > a {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+	</style>
+	
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+      
+.dark-mode .CodeMirror {
+    background-color: #1e1e1e;
+    color:white;
+}
+.dark-mode .CodeMirror-cursor {
+    border-left: 2px solid #fff; 
+}
+.dark-mode #editorContainer {
+    background-color: #1e1e1e;
+}.dark-mode #outputContainer {
+    background-color: #fff;
+    
+    border-left: 1px solid #555;
+}
+
+
+.CodeMirror {
+    font-family: monospace;
+    height: auto;
+    color: black;
+    direction: ltr;
+}
+
+#editorContainer {
+    flex: 1;
+    height: 100vh;
+    padding: 10px;
+}
+
+#outputContainer {
+    flex: 1;
+    padding: 10px;
+    border-left: 1px solid #ccc;
+}
+
+    </style>
+</head>
+<body>
+
+	
+	
+	<div id="editorContainer" style="overflow: auto; height: 100vh;">
+    <br>
+    <br>
+    <h2>Code Editor</h2>
+    <textarea id="codeEditor" style="width: 100%; height: 100%; border: none;">
 <!doctype html>
 <html>
 <head>
@@ -12,7 +116,12 @@
 </head>
 
 <body>
-	<h2 align="center"><p>a) (a+b)<sup>2</sup>=a<sup>2</sup>+2ab+b<sup>2</sup>;</p></h2>
+	<h2 align="center">
+		<p>a) (a+b)
+			<sup>2</sup>
+			=a<sup>2</sup>
+			+2ab+b<sup>2
+			</sup>;</p></h2>
 <h4 style="background-color: blue">Disciplinele preferate</h4>
 <ul type=square> 
 		<li> Informatica </li>
@@ -20,5 +129,68 @@
 		<li> Fizica </li>
 		<li> Proiectarea Web </li>
 	</ul>
+</body>
+</html>
+		</textarea>
+</div>
+	
+   
+    <div id="outputContainer">
+		<br>
+	<br>	
+        <h2><font color="black">Output</font></h2>
+        <iframe id="outputFrame" style="width: 100%; height: 100%; border: none;"></iframe>
+    </div>
+
+    <script>
+       const codeEditor = CodeMirror.fromTextArea(document.getElementById('codeEditor'), {
+    mode: 'htmlmixed',
+    lineNumbers: true,
+    theme: 'default',
+    extraKeys: {
+        'Enter': function(cm) {
+            cm.replaceSelection('\n');
+        },
+        "'&lt;'": function(cm) {
+            const curPos = cm.getCursor();
+            const line = cm.getLine(curPos.line);
+            const curLineText = line.slice(0, curPos.ch);
+        },
+    },
+});
+
+const outputFrame = document.getElementById('outputFrame');
+
+function runCode() {
+    const code = codeEditor.getValue();
+    const outputDocument = outputFrame.contentDocument;
+
+    outputDocument.open();
+    outputDocument.write(code);
+    outputDocument.close();
+
+}
+
+function toggleDarkMode() {
+    const body = document.body;
+    body.classList.toggle('dark-mode');
+
+    const isDarkMode = body.classList.contains('dark-mode');
+    localStorage.setItem('darkMode', isDarkMode);
+}
+
+window.onload = function () {
+    const isDarkMode = localStorage.getItem('darkMode') === 'true';
+    if (isDarkMode) {
+        document.body.classList.add('dark-mode');
+    }
+
+    runCode();
+};
+
+
+    </script>
+	
+	
 </body>
 </html>
