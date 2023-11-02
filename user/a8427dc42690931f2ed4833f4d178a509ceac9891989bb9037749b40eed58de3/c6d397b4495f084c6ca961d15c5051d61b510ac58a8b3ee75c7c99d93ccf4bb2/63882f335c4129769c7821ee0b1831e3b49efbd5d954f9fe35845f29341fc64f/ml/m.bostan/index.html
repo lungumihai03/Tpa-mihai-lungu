@@ -297,8 +297,35 @@
     <p><font color="white">Data publicării: 18 septembrie 2023</font></p>
     <font color="white"><p class="timestamp" data-published="2023-09-18T18:00:00Z"></p></font>
   </div>
- 
-
+ <img src="https://tpa.mihailungu.com/resources/divider.png" style="width: auto; height: auto">
+<center>
+		<h1><font face="Lora">Laboratorul 2 HTML :  02.11.2023</font></h1>
+	</center>
+	<div class="rectangle">
+    <h2><a href="https://tpa.mihailungu.com/user/a8427dc42690931f2ed4833f4d178a509ceac9891989bb9037749b40eed58de3/c6d397b4495f084c6ca961d15c5051d61b510ac58a8b3ee75c7c99d93ccf4bb2/63882f335c4129769c7821ee0b1831e3b49efbd5d954f9fe35845f29341fc64f/ml/m.bostan/exercitii/laboratorul_2/ex1.html"><font color="white">Ex 1</font></a></h2>
+    <p><font color="white">Data publicării: 02 noiembrie 2023</font></p>
+    <font color="white"><p class="timestamp" data-published="2023-11-02T22:28:00Z"></p></font>
+  </div>
+	<div class="rectangle">
+    <h2><a href="https://tpa.mihailungu.com/user/a8427dc42690931f2ed4833f4d178a509ceac9891989bb9037749b40eed58de3/c6d397b4495f084c6ca961d15c5051d61b510ac58a8b3ee75c7c99d93ccf4bb2/63882f335c4129769c7821ee0b1831e3b49efbd5d954f9fe35845f29341fc64f/ml/m.bostan/exercitii/laboratorul_2/ex2.html"><font color="white">Ex 2</font></a></h2>
+    <p><font color="white">Data publicării: 02 noiembrie 2023</font></p>
+    <font color="white"><p class="timestamp" data-published="2023-11-02T22:28:00Z"></p></font>
+  </div>
+	<div class="rectangle">
+    <h2><a href="https://tpa.mihailungu.com/user/a8427dc42690931f2ed4833f4d178a509ceac9891989bb9037749b40eed58de3/c6d397b4495f084c6ca961d15c5051d61b510ac58a8b3ee75c7c99d93ccf4bb2/63882f335c4129769c7821ee0b1831e3b49efbd5d954f9fe35845f29341fc64f/ml/m.bostan/exercitii/laboratorul_2/ex3.html"><font color="white">Ex 3</font></a></h2>
+    <p><font color="white">Data publicării: 02 noiembrie 2023</font></p>
+    <font color="white"><p class="timestamp" data-published="2023-11-02T22:28:00Z"></p></font>
+  </div>
+	<div class="rectangle">
+    <h2><a href="https://tpa.mihailungu.com/user/a8427dc42690931f2ed4833f4d178a509ceac9891989bb9037749b40eed58de3/c6d397b4495f084c6ca961d15c5051d61b510ac58a8b3ee75c7c99d93ccf4bb2/63882f335c4129769c7821ee0b1831e3b49efbd5d954f9fe35845f29341fc64f/ml/m.bostan/exercitii/laboratorul_2/ex4.html"><font color="white">Ex 4</font></a></h2>
+    <p><font color="white">Data publicării: 02 noiembrie 2023</font></p>
+    <font color="white"><p class="timestamp" data-published="2023-11-02T22:28:00Z"></p></font>
+  </div>
+	<div class="rectangle">
+    <h2><a href="https://tpa.mihailungu.com/user/a8427dc42690931f2ed4833f4d178a509ceac9891989bb9037749b40eed58de3/c6d397b4495f084c6ca961d15c5051d61b510ac58a8b3ee75c7c99d93ccf4bb2/63882f335c4129769c7821ee0b1831e3b49efbd5d954f9fe35845f29341fc64f/ml/m.bostan/exercitii/laboratorul_2/ex5.html"><font color="white">Ex 5</font></a></h2>
+    <p><font color="white">Data publicării: 02 noiembrie 2023</font></p>
+    <font color="white"><p class="timestamp" data-published="2023-11-02T22:28:00Z"></p></font>
+  </div>
   <!-- Adaugă mai multe dreptunghiuri aici -->
 
   <script>
@@ -331,6 +358,8 @@
     const timestamps = document.querySelectorAll(".timestamp");
     timestamps.forEach((timestamp) => {
       const publishedDate = new Date(timestamp.getAttribute("data-published"));
+publishedDate.setHours(publishedDate.getHours() - 2);
+
       timestamp.textContent = "Publicat acum " + timeSince(publishedDate);
     });
   </script>
