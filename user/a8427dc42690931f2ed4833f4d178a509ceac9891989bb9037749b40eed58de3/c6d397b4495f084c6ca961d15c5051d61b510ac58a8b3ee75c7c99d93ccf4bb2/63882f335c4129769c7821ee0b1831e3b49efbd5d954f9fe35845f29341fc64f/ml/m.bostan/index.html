@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -59,7 +60,24 @@
   color: #fff;
 }
 
+.dark-mode{
+			background-color: #333;
+			color:#fff;
+		}
 
+.toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+#mode-toggle {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
 	  
 	  
   </style>
@@ -123,16 +141,44 @@
     transition: background-color 0.2s ease; 
 		  cursor:pointer;
 }
+	  .dark-mode .rectangle {
+  width: auto;
+  
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+	margin-left: 10px;
+	margin-right: 10px;
+		color:white;
+    background-color: rgba(230, 230, 230, 0.2); 
+    
+    border-radius: 5px;
+		  border-color:white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    	
+    backdrop-filter: blur(5px);
+    transition: background-color 0.2s ease; 
+		  cursor:pointer;
+}
 	  .rectangle:hover{
-		  background-color: rgba(231,231,231,0.57); 
+		  background-color: rgba(34,28,50,0.2); 
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 		  color:black;
+		  border-color:black;
+	  }
+	  .dark-mode .rectangle:hover {
+		  background-color: rgba(225,225,225,0.35); 
+    box-shadow: 0 0 23px rgba(224,224,224,0.34);
+		  color:white;
 	  }
 .rectangle h2 {
   margin-top: 0;
 }
 	  .rectangle h2 a {
 		  color:black;
+	  }
+	.dark-mode .rectangle h2 a {
+		  color:white;
 	  }
 .rectangle p {
   margin: 10px 0;
@@ -248,7 +294,7 @@
 
         </ul>
         <ul class="nav navbar-nav navbar-right">
-		
+		<li id="mode-toggle"><a class="navbar-brand"><font color="white"><i class="fas fa-moon"></i></font></a></li>
           <li><a class="navbar-brand" href=><font face="Lora">Marina Bostan</font></a>
             <li>
         
@@ -261,7 +307,23 @@
       </div>
     </div>
   </nav>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+	$(document).ready(function() {
+    const modeToggle = $('#mode-toggle');
+    const body = $('body');
 
+    modeToggle.click(function() {
+        body.toggleClass('dark-mode');
+		
+        if (body.hasClass('dark-mode')) {
+            modeToggle.html('<a class="navbar-brand" href=><font color="white"><i class="fas fa-sun"></i></font></a>');
+        } else {
+            modeToggle.html('<a class="navbar-brand" href=><font color="white"><i class="fas fa-moon"></i></font></a>');
+        }
+    });
+});
+	</script>
   <font size="7" color="white">.</font>
 	<center>
 		<h1><font face="Lora">Sarcina 3 HTML :  14.09.2023</font></h1>
