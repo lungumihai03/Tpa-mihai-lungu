@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whiteboard</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        canvas {
+            display: block;
+            cursor: crosshair;
+            background-color: #fff;
+        }
+
+        #navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #eee;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #controls {
+            display: flex;
+            align-items: center;
+			width: auto;
+        }
+
+        label {
+            margin-right: 10px;
+        }
+
+        input[type="color"] {
+            border: none;
+            padding: 0;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+        }
+
+        #clear-button,  #text-button, #draw-button {
+            margin-left: 20px;
+            padding: 10px;
+            cursor: pointer;
+        }
+		
+        #save-button {
+			padding: 10px;
+            cursor: pointer;
+			margin-right: 20px;
+            background-color: #5cb85c;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <div id="controls">
+            <label for="color">Culoarea:</label>
+            <input type="color" id="color" value="#000000">
+
+            <label for="line-width">Mărimea linei:</label>
+            <input type="range" id="line-width" min="1" max="20" value="5">
+
+            <label for="eraser">Radieră:</label>
+            <input type="checkbox" id="eraser">
+
+            <button id="draw-button">Desen</button>
+            <button id="text-button">Text</button>
+        </div>
+		<h2>WhiteBoard by Mihai Lungu</h2>
+		<ul class="nav navbar-nav navbar-right">
+        <button id="clear-button">Șterge tot</button>
+        <button id="save-button">Save Image</button>
+		</ul>
+    </div>
+
+    <canvas id="whiteboard"></canvas>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const canvas = document.getElementById("whiteboard");
+            const context = canvas.getContext("2d");
+            let painting = false;
+            let eraserMode = false;
+            let textMode = false;
+            let startX, startY;
+
+            function startPosition(e) {
+                if (textMode) {
+                    const text = prompt("Enter text:");
+                    if (text !== null) {
+                        context.font = `${document.getElementById("line-width").value * 5}px Arial`;
+                        context.fillStyle = eraserMode ? "#fff" : document.getElementById("color").value;
+                        context.fillText(text, e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+                    }
+                    textMode = false;
+                    return;
+                }
+
+                painting = true;
+                startX = e.clientX - canvas.offsetLeft;
+                startY = e.clientY - canvas.offsetTop;
+                draw(e);
+            }
+
+            function endPosition() {
+                painting = false;
+                context.beginPath();
+            }
+
+            function draw(e) {
+                if (!painting) return;
+
+                const currentX = e.clientX - canvas.offsetLeft;
+                const currentY = e.clientY - canvas.offsetTop;
+
+                context.lineWidth = document.getElementById("line-width").value;
+                context.lineCap = "round";
+                context.strokeStyle = eraserMode ? "#fff" : document.getElementById("color").value;
+
+                if (textMode) {
+                    return;
+                }
+
+                context.lineTo(currentX, currentY);
+                context.stroke();
+                context.beginPath();
+                context.moveTo(currentX, currentY);
+            }
+
+            function clearCanvas() {
+                context.clearRect(0, 0, canvas.width, canvas.height);
+            }
+
+            function saveImage() {
+                const dataURL = canvas.toDataURL("image/jpeg", 1.0);
+                const a = document.createElement("a");
+                a.href = dataURL;
+                a.download = "whiteboard.jpg";
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            }
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                clearCanvas();
+            }
+
+            canvas.addEventListener("mousedown", startPosition);
+            canvas.addEventListener("mouseup", endPosition);
+            canvas.addEventListener("mousemove", draw);
+            window.addEventListener("resize", resizeCanvas);
+
+            // Add event listener for eraser checkbox
+            document.getElementById("eraser").addEventListener("change", function () {
+                eraserMode = this.checked;
+            });
+
+            // Add event listener for clear button
+            document.getElementById("clear-button").addEventListener("click", clearCanvas);
+
+            // Add event listener for save button
+            document.getElementById("save-button").addEventListener("click", saveImage);
+
+            // Add event listener for text button
+            document.getElementById("text-button").addEventListener("click", function () {
+                textMode = true;
+            });
+
+            // Add event listener for draw button
+            document.getElementById("draw-button").addEventListener("click", function () {
+                textMode = false;
+            });
+
+            // Optional: Resize canvas to fit the screen initially
+            resizeCanvas();
+        });
+    </script>
+</body>
+</html>
