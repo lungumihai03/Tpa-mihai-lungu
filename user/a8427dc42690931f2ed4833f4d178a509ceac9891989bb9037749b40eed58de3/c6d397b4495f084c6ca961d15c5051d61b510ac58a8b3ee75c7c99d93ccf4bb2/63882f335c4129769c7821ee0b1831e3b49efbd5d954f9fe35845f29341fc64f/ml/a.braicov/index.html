@@ -3,7 +3,7 @@
 <!-- A page tpa.mihailungu.ml/... -->
 <head>
   <title>Dashboard</title>
-  <link rel="icon" type="image/x-icon" href="https://tpa.mihailungu.com/resources/tpa.png">
+  <link rel="icon" type="image/x-icon" href="https://tpa.mihailungu.com//resources/tpa.png">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -26,12 +26,8 @@
             overflow: hidden; /* Ascunde partea imaginii care depășește marginea cercului */
         }
 	
-	</style>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,500&display=swap');
-	  
-	  
-	  .navbar-brand {
+
+  .navbar-brand {
   display: flex;
   align-items: center;
 }
@@ -68,7 +64,24 @@
   color: #fff;
 }
 
+.dark-mode{
+			background-color: #333;
+			color:#fff;
+		}
 
+.toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+#mode-toggle {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
 	  
 	  
   </style>
@@ -113,20 +126,64 @@
 		  padding-right: 0;
 		  
 	  }
-	  .rectangle {
+	  
+	    .rectangle {
   width: auto;
-  background-color: #5F5F5F;
+  
   border-radius: 10px;
   padding: 20px;
   margin-bottom: 20px;
 	margin-left: 10px;
 	margin-right: 10px;
+		color:black;
+    background-color: rgba(255, 255, 255, 0.4); 
+    
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    	
+    backdrop-filter: blur(5px);
+    transition: background-color 0.2s ease; 
+		  cursor:pointer;
 }
-
+	  .dark-mode .rectangle {
+  width: auto;
+  
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+	margin-left: 10px;
+	margin-right: 10px;
+		color:white;
+    background-color: rgba(230, 230, 230, 0.2); 
+    
+    border-radius: 5px;
+		  border-color:white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    	
+    backdrop-filter: blur(5px);
+    transition: background-color 0.2s ease; 
+		  cursor:pointer;
+}
+	  .rectangle:hover{
+		  background-color: rgba(34,28,50,0.2); 
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+		  color:black;
+		  border-color:black;
+	  }
+	  .dark-mode .rectangle:hover {
+		  background-color: rgba(225,225,225,0.35); 
+    box-shadow: 0 0 23px rgba(224,224,224,0.34);
+		  color:white;
+	  }
 .rectangle h2 {
   margin-top: 0;
 }
-
+	  .rectangle h2 a {
+		  color:black;
+	  }
+	.dark-mode .rectangle h2 a {
+		  color:white;
+	  }
 .rectangle p {
   margin: 10px 0;
 }
@@ -135,7 +192,6 @@
   text-align: right;
 }
 
-	  
   </style>
 
   <style>
@@ -173,20 +229,99 @@
 		
 	  }
 	  
-	  .mijloc {
-		  padding-right: 15px;
-      padding-left: 15px;
-      margin-right: auto;
-      margin-left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-    text-align: left;
-    margin: 0 auto;
-	  }
-	  
 	
+	  
+	button {
+  margin: 20px;
+}
+.custom-btn {
+	
+  width: 270px;
+  height: 40px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+		.btn-12{
+  position: relative;
+  right: 20px;
+  bottom: 20px;
+  border:none;
+  box-shadow: none;
+  width: 270px;
+  height: 40px;
+  line-height: 42px;
+  -webkit-perspective: 230px;
+  perspective: 230px;
+}
+.btn-12 span {
+  background: rgb(0,172,238);
+background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%);
+  display: block;
+  position: absolute;
+  width: 270px;
+  height: 40px;
+  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  border-radius: 5px;
+  margin:0;
+  text-align: center;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+.btn-12 span:nth-child(1) {
+  box-shadow:
+   -7px -7px 20px 0px #fff9,
+   -4px -4px 5px 0px #fff9,
+   7px 7px 20px 0px #0002,
+   4px 4px 5px 0px #0001;
+  -webkit-transform: rotateX(90deg);
+  -moz-transform: rotateX(90deg);
+  transform: rotateX(90deg);
+  -webkit-transform-origin: 50% 50% -20px;
+  -moz-transform-origin: 50% 50% -20px;
+  transform-origin: 50% 50% -20px;
+}
+.btn-12 span:nth-child(2) {
+  -webkit-transform: rotateX(0deg);
+  -moz-transform: rotateX(0deg);
+  transform: rotateX(0deg);
+  -webkit-transform-origin: 50% 50% -20px;
+  -moz-transform-origin: 50% 50% -20px;
+  transform-origin: 50% 50% -20px;
+}
+.btn-12:hover span:nth-child(1) {
+  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  -webkit-transform: rotateX(0deg);
+  -moz-transform: rotateX(0deg);
+  transform: rotateX(0deg);
+}
+.btn-12:hover span:nth-child(2) {
+  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+ color: transparent;
+  -webkit-transform: rotateX(-90deg);
+  -moz-transform: rotateX(-90deg);
+  transform: rotateX(-90deg);
+}
 
     .content {
       flex: 1;
@@ -206,6 +341,9 @@
       margin-left: 0;
 		
     }
+	  .marg{
+		  margin: 20px;
+	  }
   </style>
 
   <style>
@@ -231,9 +369,9 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="https://tpa.mihailungu.com/"><img src="https://tpa.mihailungu.com/resources/tpa.png" class="confirmed"
+        <a class="navbar-brand" href="https://tpa.mihailungu.com"><img src="https://tpa.mihailungu.com/resources/tpa.png" class="confirmed"
             style="width:60;height:50px;" /></a>
-        <a class="navbar-brand" href="https://tpa.mihailungu.com/"><font face="Lora">Mihai Lungu</font></a>
+        <a class="navbar-brand" href="https://tpa.mihailungu.com"><font face="Lora">Mihai Lungu</font></a>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
@@ -245,7 +383,7 @@
 		
           <li><a class="navbar-brand" href=><font face="Lora">Andrei Braicov</font> </a>
             <li>
-        <img src="A.png" alt="Imaginea ta" style="width: 60px; height: 60px">
+        <img src="A.png" alt="Imaginea ta" style="width: 60px; height: 60px; margin-right: 10px;">
     </li>
 				
            
@@ -255,22 +393,75 @@
       </div>
     </div>
   </nav>
-
-  <font size="7" color="white">.</font>
-<div class="rectangle">
-    <h2><font color="white">Ex 1 pag 15</font></h2>
-    <p><font color="white">Data publicării: 18 iulie 2023</font></p>
-    <font color="white"><p class="timestamp" data-published="2023-07-18T12:34:56Z"></p></font>
+	
+<br><br><br>
+	<div class="marg">
+  <h1>Laboratoarele la PAWC:</h1>
+		<br>
+		<h2>Laboratorul 1: </h2>
+<div class="rectangle" onClick="window.open('https://tpa.mihailungu.com/user/a8427dc42690931f2ed4833f4d178a509ceac9891989bb9037749b40eed58de3/c6d397b4495f084c6ca961d15c5051d61b510ac58a8b3ee75c7c99d93ccf4bb2/63882f335c4129769c7821ee0b1831e3b49efbd5d954f9fe35845f29341fc64f/ml/a.braicov/exercitii/lab1/ex4.html')">
+    <h2><a>Ex 4</a></h2>
+    <p>Data publicării: 17 martie 2024</p>
+    <p class="timestamp" data-published="2024-03-17T20:40:00Z"></p>
   </div>
-
-  <div class="rectangle">
-    <h2><font color="white">Ex 2 pag 16</font></h2>
-    <p><font color="white">Data publicării: 19 iulie 2023</font></p>
-    <font color="white"><p class="timestamp" data-published="2023-07-19T09:15:30Z"></p></font>
+<div class="rectangle" onClick="window.open('https://tpa.mihailungu.com/user/a8427dc42690931f2ed4833f4d178a509ceac9891989bb9037749b40eed58de3/c6d397b4495f084c6ca961d15c5051d61b510ac58a8b3ee75c7c99d93ccf4bb2/63882f335c4129769c7821ee0b1831e3b49efbd5d954f9fe35845f29341fc64f/ml/a.braicov/exercitii/lab1/ex13.html')">
+    <h2><a>Ex 13</a></h2>
+    <p>Data publicării: 17 martie 2024</p>
+    <p class="timestamp" data-published="2024-03-17T20:40:00Z"></p>
   </div>
-
+<button class="custom-btn btn-12" onClick="window.open('https://drive.google.com/uc?export=download&id=1qMWDnUFGOzN-k7XrEEO_6ZDVFPkw0Kqb')"><span>Download</span><span><img src="https://media.mihailungu.com/resources/icon/word.png" width="26px" height="26px"> Laboratorul 1</span></button>
+			<h2>Laboratorul 2: </h2>
+<div class="rectangle" onClick="window.open('https://tpa.mihailungu.com/user/a8427dc42690931f2ed4833f4d178a509ceac9891989bb9037749b40eed58de3/c6d397b4495f084c6ca961d15c5051d61b510ac58a8b3ee75c7c99d93ccf4bb2/63882f335c4129769c7821ee0b1831e3b49efbd5d954f9fe35845f29341fc64f/ml/a.braicov/exercitii/lab2/ex10.html')">
+    <h2><a>Ex 10</a></h2>
+    <p>Data publicării: 17 martie 2024</p>
+    <p class="timestamp" data-published="2024-03-17T20:40:00Z"></p>
+  </div>
+		<button class="custom-btn btn-12" onClick="window.open('https://drive.google.com/uc?export=download&id=1xIV1Et8o0VAFVKQhrR47Y_RF_Ei6iGv6')"><span>Download</span><span><img src="https://media.mihailungu.com/resources/icon/word.png" width="26px" height="26px"> Laboratorul 2</span></button>
+			<h2>Laboratorul 3: </h2>
+<div class="rectangle" onClick="window.open('https://tpa.mihailungu.com/user/a8427dc42690931f2ed4833f4d178a509ceac9891989bb9037749b40eed58de3/c6d397b4495f084c6ca961d15c5051d61b510ac58a8b3ee75c7c99d93ccf4bb2/63882f335c4129769c7821ee0b1831e3b49efbd5d954f9fe35845f29341fc64f/ml/a.braicov/exercitii/lab3/ex9.html')">
+    <h2><a>Ex 9</a></h2>
+    <p>Data publicării: 17 martie 2024</p>
+    <p class="timestamp" data-published="2024-03-17T20:40:00Z"></p>
+  </div>
+		<button class="custom-btn btn-12" onClick="window.open('https://drive.google.com/uc?export=download&id=1j2MvNF2DqxIob0myoh8NMuPwUtsy0Lmj')"><span>Download</span><span><img src="https://media.mihailungu.com/resources/icon/word.png" width="26px" height="26px"> Laboratorul 3</span></button>
+			<h2>Laboratorul 4: </h2>
+<div class="rectangle" onClick="window.open('https://tpa.mihailungu.com/user/a8427dc42690931f2ed4833f4d178a509ceac9891989bb9037749b40eed58de3/c6d397b4495f084c6ca961d15c5051d61b510ac58a8b3ee75c7c99d93ccf4bb2/63882f335c4129769c7821ee0b1831e3b49efbd5d954f9fe35845f29341fc64f/ml/a.braicov/exercitii/lab4/ex10.html')">
+    <h2><a>Ex 10</a></h2>
+    <p>Data publicării: 17 martie 2024</p>
+    <p class="timestamp" data-published="2024-03-17T20:40:00Z"></p>
+  </div>
+		<button class="custom-btn btn-12" onClick="window.open('https://docs.google.com/document/d/14dAKwGC-4MAJ8LMrj0vyyvKb1-8pWSwc/edit?usp=drive_link&ouid=115650805306703579129&rtpof=true&sd=true')"><span>Download</span><span><img src="https://media.mihailungu.com/resources/icon/word.png" width="26px" height="26px"> Laboratorul 4</span></button>
+			<h2>Laboratorul 5: </h2>
+<div class="rectangle" onClick="window.open('https://tpa.mihailungu.com/user/a8427dc42690931f2ed4833f4d178a509ceac9891989bb9037749b40eed58de3/c6d397b4495f084c6ca961d15c5051d61b510ac58a8b3ee75c7c99d93ccf4bb2/63882f335c4129769c7821ee0b1831e3b49efbd5d954f9fe35845f29341fc64f/ml/a.braicov/exercitii/lab5/ex13.html')">
+    <h2><a>Ex 13</a></h2>
+    <p>Data publicării: 17 martie 2024</p>
+    <p class="timestamp" data-published="2024-03-17T20:40:00Z"></p>
+  </div>
+		<div class="rectangle" onClick="window.open('https://tpa.mihailungu.com/user/a8427dc42690931f2ed4833f4d178a509ceac9891989bb9037749b40eed58de3/c6d397b4495f084c6ca961d15c5051d61b510ac58a8b3ee75c7c99d93ccf4bb2/63882f335c4129769c7821ee0b1831e3b49efbd5d954f9fe35845f29341fc64f/ml/a.braicov/exercitii/lab5/ex15.html')">
+    <h2><a>Ex 15</a></h2>
+    <p>Data publicării: 17 martie 2024</p>
+    <p class="timestamp" data-published="2024-03-17T20:40:00Z"></p>
+  </div>
+		<button class="custom-btn btn-12" onClick="window.open('https://drive.google.com/uc?export=download&id=1xk9JtM9m5RZ1jQsk6wLpNFwjQMD6CARV')"><span>Download</span><span><img src="https://media.mihailungu.com/resources/icon/word.png" width="26px" height="26px"> Laboratorul 5</span></button>
+			<h2>Laboratorul 6: </h2>
+<div class="rectangle" onClick="window.open('https://tpa.mihailungu.com/user/a8427dc42690931f2ed4833f4d178a509ceac9891989bb9037749b40eed58de3/c6d397b4495f084c6ca961d15c5051d61b510ac58a8b3ee75c7c99d93ccf4bb2/63882f335c4129769c7821ee0b1831e3b49efbd5d954f9fe35845f29341fc64f/ml/a.braicov/exercitii/lab6/ex3.html')">
+    <h2><a>Ex 3</a></h2>
+    <p>Data publicării: 17 martie 2024</p>
+    <p class="timestamp" data-published="2024-03-17T20:40:00Z"></p>
+  </div>
+		<div class="rectangle" onClick="window.open('https://tpa.mihailungu.com/user/a8427dc42690931f2ed4833f4d178a509ceac9891989bb9037749b40eed58de3/c6d397b4495f084c6ca961d15c5051d61b510ac58a8b3ee75c7c99d93ccf4bb2/63882f335c4129769c7821ee0b1831e3b49efbd5d954f9fe35845f29341fc64f/ml/a.braicov/exercitii/lab6/ex14.html')">
+    <h2><a>Ex 14</a></h2>
+    <p>Data publicării: 17 martie 2024</p>
+    <p class="timestamp" data-published="2024-03-17T20:40:00Z"></p>
+  </div>
+		<div class="rectangle" onClick="window.open('https://tpa.mihailungu.com/user/a8427dc42690931f2ed4833f4d178a509ceac9891989bb9037749b40eed58de3/c6d397b4495f084c6ca961d15c5051d61b510ac58a8b3ee75c7c99d93ccf4bb2/63882f335c4129769c7821ee0b1831e3b49efbd5d954f9fe35845f29341fc64f/ml/a.braicov/exercitii/lab6/ex15.html')">
+    <h2><a>Ex 15</a></h2>
+    <p>Data publicării: 17 martie 2024</p>
+    <p class="timestamp" data-published="2024-03-17T20:40:00Z"></p>
+  </div>
+		<button class="custom-btn btn-12" onClick="window.open('https://app.mihailungu.ml/')"><span>Download</span><span><img src="https://media.mihailungu.com/resources/icon/word.png" width="26px" height="26px"> Laboratorul 6</span></button>
   <!-- Adaugă mai multe dreptunghiuri aici -->
-
+</div>
   <script>
     function timeSince(date) {
       const seconds = Math.floor((new Date() - date) / 1000);
@@ -311,18 +502,18 @@
         <div class="col-md-6">
           <font size="4"><p>© <span id="footer-year"></span> <font face="Lora" size="+1"><font color="#0A00FF">T</font><font color="#FFF500">P</font><font color="#FF0004">A</font> Mihai Lungu</font></p></font>
         </div>
-        <div class="col-md-6" align="right">
+       <div class="col-md-6" align="right">
           <p>
 		   <a href="https://x.com/lungu_mihai03/" target="_blank"><img
-                src="https://media.mihailungu.com/resources/x-logo.png" style="width: 50px;height: 50px" /></a>
+                src="https://media.mihailungu.com/resources/x-logo.png" style="width: 50px;height: 50px" class="img-footer"/></a>
             <a href="https://www.linkedin.com/in/lungu-mihai03/" target="_blank"><img
-                src="https://tpa.mihailungu.com/resources/linkedin-logo.png" style="width: 50px;height: 50px" /></a>
+                src="https://media.mihailungu.com/resources/linkedin-logo.png" style="width: 50px;height: 50px" class="img-footer"/></a>
 
             <a href="https://www.facebook.com/lungu.mihai03" target="_blank"><img
-                src="https://tpa.mihailungu.com/resources/fb-logo.png" style="width: 50px;height: 50px" /></a>
+                src="https://media.mihailungu.com/resources/fb-logo.png" style="width: 50px;height: 50px" class="img-footer"/></a>
 
             <a href="https://www.instagram.com/lungu.mihai03/" target="_blank"><img
-                src="https://tpa.mihailungu.com/resources/ig-logo.png" style="width: 50px;height: 50px" /></a>
+                src="https://media.mihailungu.com/resources/ig-logo.png" style="width: 50px;height: 50px" class="img-footer"/></a>
           </p>
         </div>
       </div>
