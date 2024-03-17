@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/x-icon" href="https://tpa.mihailungu.com//resources/tpa.png">
+    <title>Exercitii TPA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.3/codemirror.css">
+    <script src="https://www.w3schools.com/lib/codemirror.js"></script>
+    <script src="https://www.w3schools.com/lib/codemirror_jsx.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.3/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.3/mode/css/css.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/acorn/8.4.1/acorn.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/acorn/8.4.1/walk.js"></script>
+	
+  <style>
+   
+	.CodeMirror span.cm-tag {
+        color: #485DFF;
+    }
+	  
+	</style>
+	
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        
+.dark-mode .CodeMirror {
+    background-color: #1e1e1e;
+    color:white;
+}
+.dark-mode .CodeMirror-cursor {
+    border-left: 2px solid #fff; 
+}
+.dark-mode #editorContainer {
+    background-color: #1e1e1e;
+}.dark-mode #outputContainer {
+    background-color: #fff;
+    
+    border-left: 1px solid #555;
+}
+
+.CodeMirror {
+    font-family: monospace;
+    height: auto;
+    color: black;
+    direction: ltr;
+}
+
+#editorContainer {
+    flex: 1;
+    height: 100vh;
+	
+    
+}
+
+#outputContainer {
+    flex: 1;
+    
+    border-left: 1px solid #ccc;
+}
+
+    </style>
+</head>
+<body>
+
+	
+	
+	<div id="editorContainer" style="overflow: auto; height: 100vh;">
+    <br>
+    <br>
+    <h2>Code Editor</h2>
+		<!-- text la program, mai jos e editabil -->
+    <textarea id="codeEditor" style="width: 100%; height: 100%; border: none;">
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+	<style>
+		.text{
+			width: auto;
+			height: auto;
+			min-height: 80px;
+			min-width: 600px;
+		}
+		
+		button {
+    width: 120px;
+    height: 50px;
+    background-image: linear-gradient( 90deg, blue, red);
+    color: white;
+    transition: background-image 5.5s ease-in-out; 
+			cursor:pointer;
+}
+
+
+
+	</style>
+</head>
+
+<body>
+	<h1> ex 13</h1>
+	<label>Introduceti un text:</label><br>
+
+	<textarea id="text-input" class="text"></textarea>
+	<br>
+
+	
+
+	<button id="btn-transforma" >Apasa</button><br>
+
+	<div id="text-output"></div>
+	
+	<script>
+const textInput = document.getElementById("text-input");
+const textOutput = document.getElementById("text-output");
+const btnTransforma = document.getElementById("btn-transforma");
+
+function transformareText(text) {
+  const inlocuiri = ["o", "e"];
+
+  let textNou = "";
+  for (let i = 0; i < text.length; i++) {
+    if (text[i] === "a") {
+      const pozitieImpara = i % 2 === 1;
+      textNou += inlocuiri[pozitieImpara ? 1 : 0];
+    } else {
+      textNou += text[i];
+    }
+  }
+  return textNou;
+}
+
+btnTransforma.addEventListener("click", () => {
+  const textInitial = textInput.value;
+  const textTransformat = transformareText(textInitial);
+  textOutput.textContent = textTransformat;
+});
+
+	
+	</script>
+</body>
+</html>
+
+
+		</textarea>
+</div>
+	
+   
+    <div id="outputContainer">
+		<br>
+	<br>	
+        <h2><font color="black">Output</font></h2>
+        <iframe id="outputFrame" style="width: 100%; height: 100%; border: none;"></iframe>
+    </div>
+
+    <script>
+       const codeEditor = CodeMirror.fromTextArea(document.getElementById('codeEditor'), {
+    mode: 'htmlmixed',
+    lineNumbers: true,
+    theme: 'default',
+    extraKeys: {
+        'Enter': function(cm) {
+            cm.replaceSelection('\n');
+        },
+        "'&lt;'": function(cm) {
+            const curPos = cm.getCursor();
+            const line = cm.getLine(curPos.line);
+            const curLineText = line.slice(0, curPos.ch);
+        },
+    },
+});
+
+const outputFrame = document.getElementById('outputFrame');
+
+function runCode() {
+    const code = codeEditor.getValue();
+    const outputDocument = outputFrame.contentDocument;
+
+    outputDocument.open();
+    outputDocument.write(code);
+    outputDocument.close();
+
+
+}
+runCode();
+
+
+
+    </script>
+	
+	
+</body>
+</html>
