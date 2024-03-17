@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/x-icon" href="https://tpa.mihailungu.com//resources/tpa.png">
+    <title>Exercitii TPA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.3/codemirror.css">
+    <script src="https://www.w3schools.com/lib/codemirror.js"></script>
+    <script src="https://www.w3schools.com/lib/codemirror_jsx.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.3/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.3/mode/css/css.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/acorn/8.4.1/acorn.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/acorn/8.4.1/walk.js"></script>
+	
+  <style>
+   
+	.CodeMirror span.cm-tag {
+        color: #485DFF;
+    }
+	  
+	</style>
+	
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        
+.dark-mode .CodeMirror {
+    background-color: #1e1e1e;
+    color:white;
+}
+.dark-mode .CodeMirror-cursor {
+    border-left: 2px solid #fff; 
+}
+.dark-mode #editorContainer {
+    background-color: #1e1e1e;
+}.dark-mode #outputContainer {
+    background-color: #fff;
+    
+    border-left: 1px solid #555;
+}
+
+.CodeMirror {
+    font-family: monospace;
+    height: auto;
+    color: black;
+    direction: ltr;
+}
+
+#editorContainer {
+    flex: 1;
+    height: 100vh;
+	
+    
+}
+
+#outputContainer {
+    flex: 1;
+    
+    border-left: 1px solid #ccc;
+}
+
+    </style>
+</head>
+<body>
+
+	
+	
+	<div id="editorContainer" style="overflow: auto; height: 100vh;">
+    <br>
+    <br>
+    <h2>Code Editor</h2>
+		<!-- text la program, mai jos e editabil -->
+    <textarea id="codeEditor" style="width: 100%; height: 100%; border: none;">
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+	<style>
+		.texte{
+			width: 35px;
+			height: 15px;
+			background-color: rgba(0,251,114,0.22);
+			border-radius: 5px;
+		}
+		body{
+			background-color: rgba(226,236,236,1.00);
+		}
+		button {
+			width: 80px;
+			height: 25px;
+			background-color: chartreuse;
+			border-radius: 10px;
+		}
+		
+	</style>
+</head>
+
+<body>
+	<label>raza 1</label>
+	<input type="text" class="texte" id="r1">
+	<br>
+	<br>
+	<label>raza 2</label>
+	<input type="text" class="texte" id="r2">
+	<br>
+	<br>
+	<label>coordonate cartezian x1</label>
+	<input type="text" class="texte" id="x1">
+	
+	<label>&nbsp;&nbsp;&nbsp;coordonate cartezian x2</label>
+	<input type="text" class="texte" id="x2">
+	<br>
+	<br>
+	<label>coordonate cartezian y1</label>
+	<input type="text" class="texte" id="y1">
+	
+	<label>&nbsp;&nbsp;&nbsp;coordonate cartezian y1</label>
+	<input type="text" class="texte" id="y2">
+	<br>
+<br>
+
+	<button onClick="cerc()">apasa</button>
+
+
+	<p id="out"></p>
+	<p id="out1"></p>
+	<p id="out2"></p>
+	<p id="out3"></p>
+	<p id="out4"></p>
+	<p id="out5"></p>
+	<script>
+	
+		function cerc() {
+			var r1=parseFloat(document.getElementById("r1").value);
+			var r2=parseFloat(document.getElementById("r2").value);
+			var x1=parseFloat(document.getElementById("x1").value);
+			var x2=parseFloat(document.getElementById("x2").value);
+			var y1=parseFloat(document.getElementById("y1").value);
+			var y2=parseFloat(document.getElementById("y2").value);
+			var out = document.getElementById("out");
+			var out1 = document.getElementById("out1");
+			var out2 = document.getElementById("out2");
+			var out3 = document.getElementById("out3");
+			var out4 = document.getElementById("out4");
+			var out5 = document.getElementById("out5");
+			var out6 = document.getElementById("out6");
+			if(isNaN(r1)||isNaN(r2)||isNaN(x1)||isNaN(x2)||isNaN(y1)||isNaN(y2)){
+				alert("Nu ati introdus toate datele");
+				console.log("Hello");
+			}
+			else {
+				var inter;
+				
+				
+				inter= Math.sqrt(Math.pow((x2-x1),2)+Math.pow((y2-y1), 2));
+				if(inter< r1+r2){
+					out.textContent='Sunt concentrice\n';
+					
+				}
+				else {
+					out.textContent='Sunt exterioare\n';
+				}
+				if(inter == Math.abs(r1-r2)){
+					out2.textContent = "Sunt tangente interior\n";
+				}
+				if(inter == r1+r2) {
+					out3.textContent = "Sunt tangente exterior";
+				}
+				if(r1-r2 < inter && r1+r2 > inter) {
+					out4.textContent = "Sunt secante\n";
+				}
+				if(inter == 0){
+					out5.textContent = "Sunt concentrice";
+				}
+				
+			}
+		}
+	
+	</script>
+</body>
+</html>
+
+
+
+		</textarea>
+</div>
+	
+   
+    <div id="outputContainer">
+		<br>
+	<br>	
+        <h2><font color="black">Output</font></h2>
+        <iframe id="outputFrame" style="width: 100%; height: 100%; border: none;"></iframe>
+    </div>
+
+    <script>
+       const codeEditor = CodeMirror.fromTextArea(document.getElementById('codeEditor'), {
+    mode: 'htmlmixed',
+    lineNumbers: true,
+    theme: 'default',
+    extraKeys: {
+        'Enter': function(cm) {
+            cm.replaceSelection('\n');
+        },
+        "'&lt;'": function(cm) {
+            const curPos = cm.getCursor();
+            const line = cm.getLine(curPos.line);
+            const curLineText = line.slice(0, curPos.ch);
+        },
+    },
+});
+
+const outputFrame = document.getElementById('outputFrame');
+
+function runCode() {
+    const code = codeEditor.getValue();
+    const outputDocument = outputFrame.contentDocument;
+
+    outputDocument.open();
+    outputDocument.write(code);
+    outputDocument.close();
+
+
+}
+runCode();
+
+
+
+    </script>
+	
+	
+</body>
+</html>
