@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/x-icon" href="https://tpa.mihailungu.com//resources/tpa.png">
+    <title>Exercitii TPA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.3/codemirror.css">
+    <script src="https://www.w3schools.com/lib/codemirror.js"></script>
+    <script src="https://www.w3schools.com/lib/codemirror_jsx.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.3/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.3/mode/css/css.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/acorn/8.4.1/acorn.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/acorn/8.4.1/walk.js"></script>
+	
+  <style>
+   
+	.CodeMirror span.cm-tag {
+        color: #485DFF;
+    }
+	  
+	</style>
+	
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        
+.dark-mode .CodeMirror {
+    background-color: #1e1e1e;
+    color:white;
+}
+.dark-mode .CodeMirror-cursor {
+    border-left: 2px solid #fff; 
+}
+.dark-mode #editorContainer {
+    background-color: #1e1e1e;
+}.dark-mode #outputContainer {
+    background-color: #fff;
+    
+    border-left: 1px solid #555;
+}
+
+.CodeMirror {
+    font-family: monospace;
+    height: auto;
+    color: black;
+    direction: ltr;
+}
+
+#editorContainer {
+    flex: 1;
+    height: 100vh;
+	
+    
+}
+
+#outputContainer {
+    flex: 1.2;
+    
+    border-left: 1px solid #ccc;
+}
+
+    </style>
+</head>
+<body>
+
+	
+	
+	<div id="editorContainer" style="overflow: auto; height: 100vh;">
+    <br>
+    <br>
+    <h2>Code Editor</h2>
+		<!-- text la program, mai jos e editabil -->
+    <textarea id="codeEditor" style="width: 100%; height: 100%; border: none;">
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<title>Untitled Document</title>
+	<style>
+	
+		.calculator{
+			margin-left: 1px;
+			margin-top: 130px;
+			width: 400px;
+			height: 430px;
+			background-color: #f3f3f3;
+			border: 1px solid rgba(0,90,185,1.00);
+		}
+		.name{
+			margin-left: 5px;
+			margin-top: 5px;
+		}
+		.icon{
+			margin:8px;
+			width: 20px;
+			height: 20px;
+		}
+		.mini{
+			
+			background-color: white;
+			margin-top: -12px;
+			margin-left: 205px;
+			cursor: pointer;
+			font-size: 22px;
+			color:rgba(171,171,171,1.00);
+		}
+		.mini:hover{
+			color:black;
+		}
+		.maxi{
+			margin-top: 8px;
+			margin-left: 220px;
+			width: 10px;
+			height: 10px;
+			background-color: #f3f3f3;
+			border: 1px solid rgba(171,171,171,1.00);
+			cursor: pointer;
+		}
+		.maxi:hover{
+			border: 1px solid black;
+		}
+		.inchide{
+			margin-top: -2px;
+			margin-left: 227px;
+			font-size: 20px;
+			color:rgba(171,171,171,1.00);
+			cursor: pointer;
+		}
+		.inchide:hover{
+			color:black;
+		}
+		.meniu1{
+			
+			margin-top:-10px;
+			margin-left:0px;
+		}
+		.meniu2{
+			margin-top:-22px;
+		}
+		.meniu3{
+			margin-top:-22px;
+		}
+		.inter{
+			margin:10px;
+		}
+		.into{
+			margin-top:-2px;
+		}
+		.inactive-text{
+			color: rgba(88,88,88,1.00);
+		}
+		.dat{
+			background-color: #f3f3f3;
+			width: 160px;
+			cursor: pointer;
+			border:none;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="calculator">
+		<div class="row">
+		<div class="col-md-1">
+			<img src="https://th.bing.com/th/id/OIP.rAJBiH2U0k7OSswwjuTE4wAAAA?rs=1&pid=ImgDetMain" class="icon">
+			</div>
+	<div class="col-md-1">
+		<p class="name">Calculator</p>
+			</div>
+		
+	<div class="col-md-1">
+			<p class="mini">_</p>
+			</div>
+			<div class="col-md-1">
+			<div class="maxi"></div>
+			</div>
+			<div class="col-md-1">
+			<p class="inchide">x</p>
+			</div>
+		</div>
+		<div class="inter">
+			<div class="row">
+			<div class="col-md-1">
+				<p class="meniu1">___</p>
+		<p class="meniu2">___</p>
+		<p class="meniu3">___</p>
+				</div>
+				<div class="col-md-8">
+					<h2 class="into">Date calculation</h2>
+				</div>
+				
+			</div>
+		<h4>Difference between dates</h4>
+			<br>
+			<h5 class="inactive-text">From</h5>
+		
+		<input class="dat" type="date" id="myDatePicker">
+			<br>
+			<br>
+			
+			<h5 class="inactive-text">To</h5>
+			<input class="dat" type="date" id="myDatePicker2">
+			<br>
+			<br>
+			<h5 class="inactive-text">Difference</h5>
+			<h4 id="rezultat"></h4>
+			<h5 class="inactive-text" id="rezultat-zi"></h5>
+
+<script>
+  function dife(data1, data2) {
+    const diferenta = Math.abs(data1.getTime() - data2.getTime());
+    const zile = Math.floor(diferenta / (1000 * 3600 * 24));
+    const saptamani = Math.floor(zile / 7);
+    const zileRamase = zile % 7;
+    return { saptamani, zileRamase, zile };
+  }
+  function updaterez() {
+    const data1 = new Date(document.getElementById("myDatePicker").value);
+    const data2 = new Date(document.getElementById("myDatePicker2").value);
+	  if(!isNaN(data2) && !isNaN(data1)){
+    const diferenta = dife(data1, data2);
+    document.getElementById("rezultat").innerText = `${diferenta.saptamani} weeks, ${diferenta.zileRamase} days`;
+    document.getElementById("rezultat-zi").innerText = `${diferenta.zile} days`;
+	  }
+  }
+  document.getElementById("myDatePicker").addEventListener("change", updaterez);
+  document.getElementById("myDatePicker2").addEventListener("change", updaterez);
+</script>
+
+		
+		</div>
+	
+	
+	</div>
+</body>
+</html>
+
+
+
+
+		</textarea>
+</div>
+	
+   
+    <div id="outputContainer">
+		<br>
+	<br>	
+        <h2><font color="black">Output</font></h2>
+        <iframe id="outputFrame" style="width: 100%; height: 100%; border: none;"></iframe>
+    </div>
+
+    <script>
+       const codeEditor = CodeMirror.fromTextArea(document.getElementById('codeEditor'), {
+    mode: 'htmlmixed',
+    lineNumbers: true,
+    theme: 'default',
+    extraKeys: {
+        'Enter': function(cm) {
+            cm.replaceSelection('\n');
+        },
+        "'&lt;'": function(cm) {
+            const curPos = cm.getCursor();
+            const line = cm.getLine(curPos.line);
+            const curLineText = line.slice(0, curPos.ch);
+        },
+    },
+});
+
+const outputFrame = document.getElementById('outputFrame');
+
+function runCode() {
+    const code = codeEditor.getValue();
+    const outputDocument = outputFrame.contentDocument;
+
+    outputDocument.open();
+    outputDocument.write(code);
+    outputDocument.close();
+
+
+}
+runCode();
+
+
+
+    </script>
+	
+	
+</body>
+</html>
