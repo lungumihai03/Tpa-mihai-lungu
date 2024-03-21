@@ -1,5 +1,88 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/x-icon" href="https://tpa.mihailungu.com//resources/tpa.png">
+    <title>Exercitii TPA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.3/codemirror.css">
+    <script src="https://www.w3schools.com/lib/codemirror.js"></script>
+    <script src="https://www.w3schools.com/lib/codemirror_jsx.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.3/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.3/mode/css/css.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/acorn/8.4.1/acorn.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/acorn/8.4.1/walk.js"></script>
+	
+  <style>
+   
+	.CodeMirror span.cm-tag {
+        color: #485DFF;
+    }
+	  
+	</style>
+	
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        
+.dark-mode .CodeMirror {
+    background-color: #1e1e1e;
+    color:white;
+}
+.dark-mode .CodeMirror-cursor {
+    border-left: 2px solid #fff; 
+}
+.dark-mode #editorContainer {
+    background-color: #1e1e1e;
+}.dark-mode #outputContainer {
+    background-color: #fff;
+    
+    border-left: 1px solid #555;
+}
+
+.CodeMirror {
+    font-family: monospace;
+    height: auto;
+    color: black;
+    direction: ltr;
+}
+
+#editorContainer {
+    flex: 1;
+    height: 100vh;
+	
+    
+}
+
+#outputContainer {
+    flex: 1.2;
+    
+    border-left: 1px solid #ccc;
+}
+
+    </style>
+</head>
+<body>
+
+	
+	
+	<div id="editorContainer" style="overflow: auto; height: 100vh;">
+    <br>
+    <br>
+    <h2>Code Editor</h2>
+		<!-- text la program, mai jos e editabil -->
+    <textarea id="codeEditor" style="width: 100%; height: 100%; border: none;">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -81,5 +164,58 @@
     });
 </script>
 
+</body>
+</html>
+
+
+
+
+		</textarea>
+</div>
+	
+   
+    <div id="outputContainer">
+		<br>
+	<br>	
+        <h2><font color="black">Output</font></h2>
+        <iframe id="outputFrame" style="width: 100%; height: 100%; border: none;"></iframe>
+    </div>
+
+    <script>
+       const codeEditor = CodeMirror.fromTextArea(document.getElementById('codeEditor'), {
+    mode: 'htmlmixed',
+    lineNumbers: true,
+    theme: 'default',
+    extraKeys: {
+        'Enter': function(cm) {
+            cm.replaceSelection('\n');
+        },
+        "'&lt;'": function(cm) {
+            const curPos = cm.getCursor();
+            const line = cm.getLine(curPos.line);
+            const curLineText = line.slice(0, curPos.ch);
+        },
+    },
+});
+
+const outputFrame = document.getElementById('outputFrame');
+
+function runCode() {
+    const code = codeEditor.getValue();
+    const outputDocument = outputFrame.contentDocument;
+
+    outputDocument.open();
+    outputDocument.write(code);
+    outputDocument.close();
+
+
+}
+runCode();
+
+
+
+    </script>
+	
+	
 </body>
 </html>
