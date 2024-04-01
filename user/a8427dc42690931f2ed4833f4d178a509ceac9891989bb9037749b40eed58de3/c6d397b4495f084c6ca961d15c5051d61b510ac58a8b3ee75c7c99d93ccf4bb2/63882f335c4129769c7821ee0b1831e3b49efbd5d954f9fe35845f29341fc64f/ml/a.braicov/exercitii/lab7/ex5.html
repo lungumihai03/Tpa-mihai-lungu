@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="https://tpa.mihailungu.com//resources/tpa.png">
+    <title>Exercitii TPA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.3/codemirror.css">
+    <script src="https://www.w3schools.com/lib/codemirror.js"></script>
+    <script src="https://www.w3schools.com/lib/codemirror_jsx.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.3/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.3/mode/css/css.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/acorn/8.4.1/acorn.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/acorn/8.4.1/walk.js"></script>
+    <style>
+        .CodeMirror span.cm-tag {
+            color: #485DFF;
+        }
+    </style>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .dark-mode .CodeMirror {
+            background-color: #1e1e1e;
+            color:white;
+        }
+        .dark-mode .CodeMirror-cursor {
+            border-left: 2px solid #fff; 
+        }
+        .dark-mode #editorContainer {
+            background-color: #1e1e1e;
+        }
+        .dark-mode #outputContainer {
+            background-color: #fff;
+            border-left: 1px solid #555;
+        }
+        .CodeMirror {
+            font-family: monospace;
+            height: auto;
+            color: black;
+            direction: ltr;
+        }
+
+        #editorContainer {
+            flex: 1;
+            height: 100vh;
+        }
+
+        #outputContainer {
+            flex: 1.2;
+            border-left: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div id="editorContainer" style="overflow: auto; height: 100vh;">
+        <br>
+        <br>
+        <h2>Code Editor</h2>
+        <!-- text la program, mai jos e editabil -->
+        <textarea id="codeEditor" style="width: 100%; height: 100%; border: none;">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;title&gt;Calcul suma și număr elemente pozitive într-o matrice&lt;/title&gt;
+&lt;style&gt;
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    .textarea {
+        min-width: 400px;
+        min-height: 100px; /* Înălțimea minimă a textarea-ului */
+        resize: none; /* Previne redimensionarea manuală */
+    }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h2&gt;Calcul suma și număr elemente pozitive într-o matrice&lt;/h2&gt;
+
+&lt;div&gt;
+    &lt;label for="matrixInput"&gt;Introduceți matricea:&lt;/label&gt;&lt;br&gt;
+    &lt;textarea class="textarea" id="matrixInput" oninput="autoResize()"&gt;&lt;/textarea&gt;&lt;br&gt;
+    &lt;button onclick="calculate()"&gt;Calculează&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div id="result"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+    function autoResize() {
+        const textarea = document.getElementById('matrixInput');
+        textarea.style.height = 'auto'; // Resetează înălțimea la valoarea implicită
+        textarea.style.height = textarea.scrollHeight + 'px'; // Setează înălțimea la înălțimea conținutului
+    }
+
+    function calculate() {
+        var matrixStr = document.getElementById("matrixInput").value.trim();
+        var lines = matrixStr.split("\n");
+        var resultHTML = "&lt;h3&gt;Rezultate:&lt;/h3&gt;&lt;table&gt;&lt;tr&gt;&lt;th&gt;Linie&lt;/th&gt;&lt;th&gt;Suma&lt;/th&gt;&lt;th&gt;Număr elemente pozitive&lt;/th&gt;&lt;/tr&gt;";
+
+        for (var i = 0; i < lines.length; i++) {
+            var elements = lines[i].trim().split(" ").map(Number);
+            var sum = 0;
+            var positiveCount = 0;
+
+            for (var j = 0; j < elements.length; j++) {
+                sum += elements[j];
+                if (elements[j] > 0) {
+                    positiveCount++;
+                }
+            }
+
+            resultHTML += "&lt;tr&gt;&lt;td&gt;" + (i + 1) + "&lt;/td&gt;&lt;td&gt;" + sum + "&lt;/td&gt;&lt;td&gt;" + positiveCount + "&lt;/td&gt;&lt;/tr&gt;";
+        }
+
+        resultHTML += "&lt;/table&gt;";
+        document.getElementById("result").innerHTML = resultHTML;
+    }
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+        </textarea>
+    </div>
+
+    <div id="outputContainer">
+        <br>
+        <br>    
+        <h2><font color="black">Output</font></h2>
+        <iframe id="outputFrame" style="width: 100%; height: 100%; border: none;"></iframe>
+    </div>
+
+    <script>
+        const codeEditor = CodeMirror.fromTextArea(document.getElementById('codeEditor'), {
+            mode: 'htmlmixed',
+            lineNumbers: true,
+            theme: 'default',
+            extraKeys: {
+                'Enter': function(cm) {
+                    cm.replaceSelection('\n');
+                },
+                "'&lt;'": function(cm) {
+                    const curPos = cm.getCursor();
+                    const line = cm.getLine(curPos.line);
+                    const curLineText = line.slice(0, curPos.ch);
+                },
+            },
+        });
+
+        const outputFrame = document.getElementById('outputFrame');
+
+        function runCode() {
+            const code = codeEditor.getValue();
+            const outputDocument = outputFrame.contentDocument;
+
+            outputDocument.open();
+            outputDocument.write(code);
+            outputDocument.close();
+        }
+
+        runCode();
+    </script>
+</body>
+</html>
