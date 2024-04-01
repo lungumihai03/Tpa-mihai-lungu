@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="https://tpa.mihailungu.com//resources/tpa.png">
+    <title>Exercitii TPA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.3/codemirror.css">
+    <script src="https://www.w3schools.com/lib/codemirror.js"></script>
+    <script src="https://www.w3schools.com/lib/codemirror_jsx.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.3/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.3/mode/css/css.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/acorn/8.4.1/acorn.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/acorn/8.4.1/walk.js"></script>
+    <style>
+        .CodeMirror span.cm-tag {
+            color: #485DFF;
+        }
+    </style>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .dark-mode .CodeMirror {
+            background-color: #1e1e1e;
+            color:white;
+        }
+        .dark-mode .CodeMirror-cursor {
+            border-left: 2px solid #fff; 
+        }
+        .dark-mode #editorContainer {
+            background-color: #1e1e1e;
+        }
+        .dark-mode #outputContainer {
+            background-color: #fff;
+            border-left: 1px solid #555;
+        }
+        .CodeMirror {
+            font-family: monospace;
+            height: auto;
+            color: black;
+            direction: ltr;
+        }
+
+        #editorContainer {
+            flex: 1;
+            height: 100vh;
+        }
+
+        #outputContainer {
+            flex: 1.2;
+            border-left: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div id="editorContainer" style="overflow: auto; height: 100vh;">
+        <br>
+        <br>
+        <h2>Code Editor</h2>
+        <!-- text la program, mai jos e editabil -->
+        <textarea id="codeEditor" style="width: 100%; height: 100%; border: none;">
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css&quot;&gt;
+  &lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+&lt;title&gt;Calculator Polinom&lt;/title&gt;
+&lt;style&gt;
+	body {
+    font-family: Arial, sans-serif;
+		align-content: center;
+		align-items: center;
+		text-align: center;
+}
+h1 {
+    text-align: center;
+}
+#output {
+    margin: 20px auto;
+    width: 80%;
+    border: 1px solid #ccc;
+    padding: 10px;
+	font-size: 20px;
+}
+	&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Calculator Polinom&lt;/h1&gt;
+	&lt;br&gt;
+	&lt;br&gt;
+	&lt;br&gt;
+	&lt;div class=&quot;row&quot;&gt;
+		&lt;div class=&quot;col-md-6&quot;&gt;
+			&lt;label for=&quot;grad-m&quot;&gt;Introduceti valoarea monomului: (2x^2y)&lt;/label&gt;
+	&lt;input type=&quot;text&quot; id=&quot;var-m&quot;&gt;
+		&lt;/div&gt;
+		&lt;div class=&quot;col-md-6&quot;&gt;
+		&lt;label for=&quot;grad-m&quot;&gt;Introduceti valoarea polinomului:  (3x^2y)&lt;/label&gt;
+	&lt;input type=&quot;text&quot; id=&quot;var-p&quot;&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;button onClick=&quot;apasa()&quot;&gt;Calculeaza&lt;/button&gt;
+&lt;div id=&quot;output&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+	function apasa(){
+		var inputm = document.getElementById(&quot;var-m&quot;);
+        var inputTextm = inputm.value;
+        var valuesM = inputTextm.split(',').map(function(item) {
+            return parseFloat(item.trim());
+        });
+		var inputp = document.getElementById(&quot;var-p&quot;);
+        var inputTextp = inputp.value;
+        var valuesP = inputTextp.split(',').map(function(item) {
+            return parseFloat(item.trim());
+        });
+	class TMonom {
+    constructor(coeficient, parteLiterala) {
+        this.coeficient = coeficient;
+        this.parteLiterala = parteLiterala;
+    }
+    calculareGrad() {
+        return this.parteLiterala.length;
+    }
+    calculareValoare(valoriVariabile) {
+        let valoare = this.coeficient;
+        for (let i = 0; i &lt; this.parteLiterala.length; i++) {
+            valoare *= Math.pow(valoriVariabile[i], this.parteLiterala[i]);
+        }
+        return valoare;
+    }
+    ordonareLexicografica() {
+        return this.parteLiterala.sort();
+    }
+}
+class TPolinom extends TMonom {
+    constructor(coeficient, parteLiterala) {
+        super(coeficient, parteLiterala);
+    }
+    calculareGrad() {
+        let gradMaxim = 0;
+        for (let i = 0; i &lt; this.parteLiterala.length; i++) {
+            if (this.parteLiterala[i] &gt; gradMaxim) {
+                gradMaxim = this.parteLiterala[i];
+            }
+        }
+        return gradMaxim;
+    }
+    calculareValoare(valoriVariabile) {
+        let valoare = 0;
+        valoare += super.calculareValoare(valoriVariabile);
+        return valoare;
+    }
+    aducereFormaCanonica() {
+        this.parteLiterala.sort((a, b) =&gt; b - a);
+    }
+}
+const monom = new TMonom(2, [1, 2]);
+document.getElementById(&quot;output&quot;).innerHTML = &quot;Gradul monomului: &quot; + monom.calculareGrad()+ &quot;&lt;br&gt;&quot; + &quot;Valoarea monomului pentru &quot; + valuesM + &quot; : &quot; + monom.calculareValoare(valuesM) + &quot;&lt;br&gt;&quot; + &quot;Partea literală ordonată lexicografic: &quot; + monom.ordonareLexicografica() + &quot;&lt;br&gt;&quot;;
+const polinom = new TPolinom(3, [1, 2]); 
+		document.getElementById(&quot;output&quot;).innerHTML = document.getElementById(&quot;output&quot;).innerHTML + &quot;&lt;br&gt;&quot; + &quot;Gradul polinomului:&quot; + polinom.calculareGrad() + &quot;&lt;br&gt;&quot; + &quot;Valoarea polinomului pentru &quot; + valuesP  + &quot; : &quot; + polinom.calculareValoare(valuesP) + &quot;&lt;br&gt;&quot;;
+		polinom.aducereFormaCanonica();
+		document.getElementById(&quot;output&quot;).innerHTML = document.getElementById(&quot;output&quot;).innerHTML + &quot;Forma canonică a polinomului:&quot; + polinom.parteLiterala ;
+	}
+	&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+        </textarea>
+    </div>
+
+    <div id="outputContainer">
+        <br>
+        <br>    
+        <h2><font color="black">Output</font></h2>
+        <iframe id="outputFrame" style="width: 100%; height: 100%; border: none;"></iframe>
+    </div>
+
+    <script>
+        const codeEditor = CodeMirror.fromTextArea(document.getElementById('codeEditor'), {
+            mode: 'htmlmixed',
+            lineNumbers: true,
+            theme: 'default',
+            extraKeys: {
+                'Enter': function(cm) {
+                    cm.replaceSelection('\n');
+                },
+                "'&lt;'": function(cm) {
+                    const curPos = cm.getCursor();
+                    const line = cm.getLine(curPos.line);
+                    const curLineText = line.slice(0, curPos.ch);
+                },
+            },
+        });
+
+        const outputFrame = document.getElementById('outputFrame');
+
+        function runCode() {
+            const code = codeEditor.getValue();
+            const outputDocument = outputFrame.contentDocument;
+
+            outputDocument.open();
+            outputDocument.write(code);
+            outputDocument.close();
+        }
+
+        runCode();
+    </script>
+</body>
+</html>
